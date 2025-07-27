@@ -8,7 +8,7 @@ import lombok.Data;
 public class LoginRequest {
 
     @NotBlank
-    private String username;
+    private String username;// Esto es para indicar que no puede estar en blanco
 
     @NotBlank
     private String password;
