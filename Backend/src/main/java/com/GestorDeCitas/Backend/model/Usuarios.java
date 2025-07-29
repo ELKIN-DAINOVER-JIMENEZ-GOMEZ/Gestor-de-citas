@@ -3,15 +3,14 @@ package com.GestorDeCitas.Backend.model;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -42,6 +41,11 @@ public class Usuarios {
 
     private String password;
 
+    @ManyToMany(fetch= FetchType.EAGER)
+    @JoinTable(name = "usuarios_roles",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private java.util.Set<Roles> roles = new java.util.HashSet<>();
 
 
    
